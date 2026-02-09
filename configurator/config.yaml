@@ -41,3 +41,21 @@ schema:
     - str
   ssh_keys:
     - str
+    modbus:
+  - name: alphaess
+    type: tcp
+    host: 192.168.68.144
+    port: 502
+    unit_id: 1
+    timeout: 5
+    sensor:
+  - platform: modbus
+    scan_interval: 10
+    registers:
+      - name: "AlphaESS Battery SOC (test)"
+        hub: alphaess
+        unit_of_measurement: "%"
+        address: 33022
+        input_type: holding
+        data_type: uint16
+        scale: 0.1
